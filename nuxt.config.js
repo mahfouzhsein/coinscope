@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-01',
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
+  modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxtjs/storybook'],
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     coinGeckoApiKey: process.env.COINGECKO_API_KEY || '',
@@ -20,5 +20,8 @@ export default defineNuxtConfig({
   },
   typescript: {
     typeCheck: false,
+  },
+  storybook: {
+    port: 6006,
   },
 })

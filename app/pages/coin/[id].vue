@@ -1,4 +1,6 @@
 <script setup>
+import { stripHtml } from '~/utils/formatters'
+
 const route = useRoute()
 const preferences = usePreferencesStore()
 const { currency, compact, percent } = useFormatters()
@@ -27,6 +29,8 @@ const stats = computed(() => {
     ['All-time high', currency(market.ath?.[code] || 0, code)],
   ]
 })
+
+const description = computed(() => stripHtml(coin.value?.description?.en || '').split('. ').slice(0, 4).join('. '))
 </script>
 
 <template>
@@ -65,10 +69,10 @@ const stats = computed(() => {
       </div>
     </div>
 
-    <div v-if="coin.description?.en" class="surface p-6 sm:p-8">
+    <div v-if="description" class="surface p-6 sm:p-8">
       <p class="eyebrow">About</p>
       <h2 class="mt-1 text-xl font-semibold text-white">{{ coin.name }}</h2>
-      <p class="mt-4 max-w-4xl text-sm leading-7 text-slate-400" v-html="coin.description.en.split('. ').slice(0, 4).join('. ')" />
+      <p class="mt-4 max-w-4xl text-sm leading-7 text-slate-400">{{ description }}</p>
     </div>
   </section>
 </template>
