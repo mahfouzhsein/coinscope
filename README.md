@@ -6,6 +6,11 @@ CoinScope is a polished portfolio application built with Nuxt 4, Vue 3, JavaScri
 
 > Portfolio project by **Hussein Mahfouz** — Frontend Developer specializing in Vue.js / Nuxt.js.
 
+## Live
+
+- **Application:** https://coinscope-kappa.vercel.app/
+- **Storybook:** https://coinscope-storybook.vercel.app/
+
 ## Highlights
 
 - Global crypto market overview and trending assets
@@ -45,7 +50,7 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the full rationale.
 | Styling | Tailwind CSS |
 | API | CoinGecko via Nitro server routes |
 | Charts | Chart.js + vue-chartjs |
-| Components | Storybook 10 / Nuxt Storybook |
+| Components | Storybook 10 with Vue 3 / Vite |
 | Tests | Vitest |
 | Quality | ESLint + GitHub Actions |
 
@@ -79,13 +84,13 @@ docs/                    # architecture, spec, roadmap, changelog
 ### Requirements
 
 - Node.js 22+
-- npm
+- pnpm 10+
 
 ```bash
 git clone https://github.com/mahfouzhsein/coinscope.git
 cd coinscope
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 The app is available at `http://localhost:3000`.
@@ -108,8 +113,10 @@ The key stays server-side and is never exposed to browser components.
 
 ## Storybook
 
+Hosted Storybook: https://coinscope-storybook.vercel.app/
+
 ```bash
-npm run storybook
+pnpm storybook
 ```
 
 Storybook documents reusable states such as positive/negative price movement, watchlist actions, loading skeletons and provider failures.
@@ -117,10 +124,10 @@ Storybook documents reusable states such as positive/negative price movement, wa
 ## Quality commands
 
 ```bash
-npm run lint
-npm test
-npm run build
-npm run build-storybook
+pnpm lint
+pnpm test
+pnpm build
+pnpm build-storybook
 ```
 
 The same quality gates run in GitHub Actions on pushes and pull requests.
