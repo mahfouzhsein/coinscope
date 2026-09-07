@@ -16,8 +16,8 @@
 - [x] Unit tests
 - [x] CI workflow
 - [x] Architecture documentation
-- [ ] Live deployment URL
-- [ ] Hosted Storybook URL
+- [x] Live deployment URL
+- [x] Hosted Storybook URL
 - [ ] Visual-regression workflow
 
 ## Later
