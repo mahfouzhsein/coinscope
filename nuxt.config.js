@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-01',
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxtjs/storybook'],
+  modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
   components: [{ path: '~/components', pathPrefix: false }],
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
@@ -21,8 +21,5 @@ export default defineNuxtConfig({
   },
   typescript: {
     typeCheck: false,
-  },
-  storybook: {
-    port: 6006,
   },
 })
