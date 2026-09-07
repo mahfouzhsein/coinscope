@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue'
 import { formatPercent } from '../../utils/formatters'
 
 const props = defineProps({ value: { type: Number, default: 0 } })
