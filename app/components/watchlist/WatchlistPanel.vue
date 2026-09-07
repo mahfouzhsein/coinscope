@@ -3,7 +3,7 @@ const watchlist = useWatchlistStore()
 const preferences = usePreferencesStore()
 const { currency } = useFormatters()
 const coins = ref([])
-const pending = ref(false)
+const pending = ref(true)
 const error = ref(null)
 
 onMounted(async () => {
@@ -15,14 +15,27 @@ onMounted(async () => {
 watch(() => watchlist.ids.join(','), () => load())
 
 async function load() {
-  if (!watchlist.hydrated || !watchlist.ids.length) {
-    coins.value = []
+  if (!watchlist.hydrated) {
+    pending.value = true
     return
   }
+
+  if (!watchlist.ids.length) {
+    coins.value = []
+    pending.value = false
+    return
+  }
+
   pending.value = true
   error.value = null
   try {
-    coins.value = await $fetch('/api/coins', { query: { ids: watchlist.ids.join(','), perPage: 100, currency: preferences.currency } })
+    coins.value = await $fetch('/api/coins', {
+      query: {
+        ids: watchlist.ids.join(','),
+        perPage: 100,
+        currency: preferences.currency,
+      },
+    })
   } catch (cause) {
     error.value = cause
   } finally {
@@ -33,7 +46,9 @@ async function load() {
 
 <template>
   <BaseErrorState v-if="error" @retry="load" />
-  <div v-else-if="pending" class="surface p-6"><BaseSkeleton :lines="6" /></div>
+  <div v-else-if="pending || !watchlist.hydrated" class="surface p-6">
+    <BaseSkeleton :lines="6" />
+  </div>
   <div v-else-if="!watchlist.ids.length" class="surface p-10 text-center">
     <div class="mx-auto grid size-14 place-items-center rounded-2xl bg-slate-800 text-2xl text-amber-300">☆</div>
     <h2 class="mt-4 text-lg font-semibold text-white">Your watchlist is empty</h2>
