@@ -11,7 +11,7 @@ describe('formatters', () => {
   })
 
   it('formats compact market values', () => {
-    expect(formatCompactCurrency(1500000000, 'usd')).toMatch(/\$1\.5B/)
+    expect(formatCompactCurrency(1500000000, 'usd')).toBe('$1.50B')
   })
 
   it('formats signed percentages', () => {
