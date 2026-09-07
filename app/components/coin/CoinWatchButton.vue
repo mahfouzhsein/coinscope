@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
-import { useWatchlistStore } from '~/stores/watchlist'
+import { useWatchlistStore } from '../../stores/watchlist'
 
 const props = defineProps({ id: { type: String, required: true } })
 const watchlist = useWatchlistStore()
