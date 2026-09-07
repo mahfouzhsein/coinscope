@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    background: #070b14;
+  }
+
+  html {
+    @apply bg-slate-950 text-slate-100 antialiased;
+  }
+
+  body {
+    @apply min-h-screen bg-slate-950 text-slate-100;
+    background-image:
+      radial-gradient(circle at 15% -10%, rgba(34, 211, 238, 0.12), transparent 28rem),
+      radial-gradient(circle at 90% 5%, rgba(99, 102, 241, 0.12), transparent 28rem);
+  }
+
+  * {
+    @apply border-slate-800;
+  }
+
+  ::selection {
+    @apply bg-cyan-400/30 text-cyan-50;
+  }
+}
+
+@layer components {
+  .surface {
+    @apply rounded-2xl border border-slate-800/80 bg-slate-900/70 shadow-2xl shadow-black/10 backdrop-blur;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300;
+  }
+}
