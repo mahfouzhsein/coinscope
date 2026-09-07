@@ -1,4 +1,10 @@
+import { setup } from '@storybook/vue3'
+import { createPinia } from 'pinia'
 import '../app/assets/css/main.css'
+
+setup((app) => {
+  app.use(createPinia())
+})
 
 export default {
   parameters: {
