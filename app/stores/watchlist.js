@@ -1,3 +1,6 @@
+import { defineStore } from 'pinia'
+import { ref, watch } from 'vue'
+
 export const useWatchlistStore = defineStore('watchlist', () => {
   const ids = ref([])
   const hydrated = ref(false)
